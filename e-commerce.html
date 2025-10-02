@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sanjivani E-Commerce - Best Health Remedies</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+
+        /* Navbar Styles */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 13px 0;
+            z-index: 10;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: white;
+            font-size: 17px;
+            font-weight: 600;
+            margin: 0 15px;
+            transition: color 0.3s ease;
+        }
+
+        .navbar a:hover {
+            color: #4caf50;
+        }
+
+        /* Banner Styles */
+        .banner {
+            width: 100%;
+            height: 400px;
+            background-image: url('https://i.postimg.cc/440YqTxK/bann.jpg');
+            
+            background-position: center;
+            background-size: cover;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .banner h1 {
+            color: rgb(37, 36, 36);
+            font-size: 3rem;
+            font-family: 'Poppins', sans-serif;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+        }
+
+        .banner p {
+            font-size: 1.5rem;
+            color: #211d1d;
+            font-weight: 500;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+            margin-top: 10px;
+        }
+
+        /* Main Section Styles */
+        main {
+            padding: 50px 20px;
+            margin-top: 10px;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+            align-items: center;
+        }
+
+        .controls select, .controls input {
+            padding: 10px;
+            font-size: 1rem;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        .product-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 40px;
+            justify-items: center;
+            margin-top: 30px;
+            padding-left: 70px;
+        }
+
+        .product-card {
+            background-color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            width: 100%;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .product-card .product-info {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .product-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            color: #333;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .product-card p {
+            font-size: 1rem;
+            color: #777;
+            margin-bottom: 15px;
+        }
+
+        .product-card .price {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #45cc45;
+            margin-bottom: 20px;
+        }
+
+        .product-card .btn {
+            background-color: #45cc45;
+            color: #fff;
+            padding: 12px 25px;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .product-card .btn:hover {
+            background-color: #333;
+            transform: translateY(-3px);
+        }
+
+        .pagination {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .pagination a {
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            margin: 0 5px;
+            text-decoration: none;
+            background-color: #45cc45;
+            color: white;
+            border-radius: 5px;
+        }
+
+        .pagination a:hover {
+            background-color: #333;
+        }
+
+        /* Smooth Hover Effects */
+        .product-card:hover .btn {
+            background-color: #333;
+            transform: translateY(-5px);
+        }
+
+        .product-card:hover .price {
+            color: #ff6347;
+        }
+
+        /* Media Queries for Responsive Design */
+        @media (max-width: 768px) {
+            .product-list {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .product-list {
+                grid-template-columns: 1fr;
+            }
+
+            .banner h1 {
+                font-size: 2rem;
+            }
+
+            .banner p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+
+    <div class="navbar">
+        <a href="first.html">Home</a>
+        
+        <a href="services.html">Services</a>
+        <a href="contactUs.html">Contact</a>
+        <a href="aboutUs.html">About</a>
+        <a href="e-commerce.html">Our Products</a>
+    </div>
+<!-- Banner Section -->
+<div class="banner">
+    <div>
+        <h1>Welcome to AyurSphere Remedies</h1>
+        <p>Natural Health Products for a Better You</p>
+    </div>
+</div>
+
+<!-- Main Section (Product Listings) -->
+<main>
+    <!-- Controls (Search, Sort, Filter) -->
+    <div class="controls">
+        <input type="text" id="search-bar" placeholder="Search products..." onkeyup="filterProducts()">
+        <select id="category-filter" onchange="filterProducts()">
+            <option value="">Filter by Category</option>
+            <option value="tea">Herbal Tea</option>
+            <option value="capsules">Ginger Capsules</option>
+            <option value="gel">Aloe Vera Gel</option>
+            <option value="oil">Lavender Oil</option>
+        </select>
+        <select id="sort-options" onchange="sortProducts()">
+            <option value="default">Sort by</option>
+            <option value="price-asc">Price: Low to High</option>
+            <option value="price-desc">Price: High to Low</option>
+        </select>
+    </div>
+
+    <!-- Product Listings -->
+    <section class="product-list" id="product-list">
+        <div class="product-card" data-category="tea">
+            <img src="https://via.placeholder.com/250" alt="Herbal Tea">
+            <div class="product-info">
+                <h3>Herbal Tea</h3>
+                <p>Natural and soothing herbal tea for stress relief.</p>
+                <div class="price">₹1,200</div>
+                <button class="btn">Add to Cart</button>
+            </div>
+        </div>
+    
+        <div class="product-card" data-category="capsules">
+            <img src="https://via.placeholder.com/250" alt="Ginger Capsules">
+            <div class="product-info">
+                <h3>Ginger Capsules</h3>
+                <p>Helps with digestion and nausea relief.</p>
+                <div class="price">₹1,500</div>
+                <button class="btn">Add to Cart</button>
+            </div>
+        </div>
+    
+        <div class="product-card" data-category="gel">
+            <img src="https://via.placeholder.com/250" alt="Aloe Vera Gel">
+            <div class="product-info">
+                <h3>Aloe Vera Gel</h3>
+                <p>Soothes skin irritation and burns.</p>
+                <div class="price">₹950</div>
+                <button class="btn">Add to Cart</button>
+            </div>
+        </div>
+    
+        <div class="product-card" data-category="oil">
+            <img src="https://via.placeholder.com/250" alt="Lavender Oil">
+            <div class="product-info">
+                <h3>Lavender Oil</h3>
+                <p>Relaxing lavender oil for stress and sleep.</p>
+                <div class="price">₹1,100</div>
+                <button class="btn">Add to Cart</button>
+            </div>
+        </div>
+    
+        <div class="product-card" data-category="supplements">
+            <img src="https://via.placeholder.com/250" alt="Vitamin C Tablets">
+            <div class="product-info">
+                <h3>Vitamin C Tablets</h3>
+                <p>Boosts immunity and keeps you healthy.</p>
+                <div class="price">₹500</div>
+                <button class="btn">Add to Cart</button>
+            </div>
+        </div>
+    
+        <div class="product-card" data-category="tea">
+            <img src="https://via.placeholder.com/250" alt="Chamomile Tea">
+            <div class="product-info">
+                <h3>Chamomile Tea</h3>
+                <p>Promotes relaxation and better sleep.</p>
+                <div class="price">₹1,300</div>
+                <button class="btn">Add to Cart</button>
+            </div>
+        </div>
+    
+        <div class="product-card" data-category="oil">
+            <img src="https://via.placeholder.com/250" alt="Coconut Oil">
+            <div class="product-info">
+                <h3>Organic Coconut Oil</h3>
+                <p>Great for skin, hair, and cooking.</p>
+                <div class="price">₹900</div>
+                <button class="btn">Add to Cart</button>
+            </div>
+        </div>
+    
+        <div class="product-card" data-category="supplements">
+            <img src="https://via.placeholder.com/250" alt="Omega-3 Capsules">
+            <div class="product-info">
+                <h3>Omega-3 Capsules</h3>
+                <p>Supports heart and brain health.</p>
+                <div class="price">₹1,800</div>
+                <button class="btn">Add to Cart</button>
+            </div>
+        </div>
+    
+        <div class="product-card" data-category="gel">
+            <img src="https://via.placeholder.com/250" alt="Tea Tree Gel">
+            <div class="product-info">
+                <h3>Tea Tree Gel</h3>
+                <p>Effective for acne and blemishes.</p>
+                <div class="price">₹850</div>
+                <button class="btn">Add to Cart</button>
+            </div>
+        </div>
+    
+        <div class="product-card" data-category="capsules">
+            <img src="https://via.placeholder.com/250" alt="Turmeric Capsules">
+            <div class="product-info">
+                <h3>Turmeric Capsules</h3>
+                <p>Anti-inflammatory and antioxidant properties.</p>
+                <div class="price">₹1,200</div>
+                <button class="btn">Add to Cart</button>
+            </div>
+        </div>
+    
+        <div class="product-card" data-category="tea">
+            <img src="https://via.placeholder.com/250" alt="Green Tea">
+            <div class="product-info">
+                <h3>Green Tea</h3>
+                <p>Rich in antioxidants for overall health.</p>
+                <div class="price">₹1,100</div>
+                <button class="btn">Add to Cart</button>
+            </div>
+        </div>
+    
+        <div class="product-card" data-category="oil">
+            <img src="https://via.placeholder.com/250" alt="Eucalyptus Oil">
+            <div class="product-info">
+                <h3>Eucalyptus Oil</h3>
+                <p>Relieves cold and sinus symptoms.</p>
+                <div class="price">₹1,000</div>
+                <button class="btn">Add to Cart</button>
+            </div>
+        </div>
+    
+        <div class="product-card" data-category="capsules">
+            <img src="https://via.placeholder.com/250" alt="Ashwagandha Capsules">
+            <div class="product-info">
+                <h3>Ashwagandha Capsules</h3>
+                <p>Reduces stress and boosts energy.</p>
+                <div class="price">₹1,700</div>
+                <button class="btn">Add to Cart</button>
+            </div>
+        </div>
+    
+        <div class="product-card" data-category="gel">
+            <img src="https://via.placeholder.com/250" alt="Rose Gel">
+            <div class="product-info">
+                <h3>Rose Gel</h3>
+                <p>Hydrates and rejuvenates the skin.</p>
+                <div class="price">₹1,000</div>
+                <button class="btn">Add to Cart</button>
+            </div>
+        </div>
+    
+        <div class="product-card" data-category="supplements">
+            <img src="https://via.placeholder.com/250" alt="Protein Powder">
+            <div class="product-info">
+                <h3>Protein Powder</h3>
+                <p>Builds muscle and supports recovery.</p>
+                <div class="price">₹2,500</div>
+                <button class="btn">Add to Cart</button>
+            </div>
+        </div>
+    
+        <div class="product-card" data-category="tea">
+            <img src="https://via.placeholder.com/250" alt="Lemon Ginger Tea">
+            <div class="product-info">
+                <h3>Lemon Ginger Tea</h3>
+                <p>Boosts immunity and aids digestion.</p>
+                <div class="price">₹1,400</div>
+                <button class="btn">Add to Cart</button>
+            </div>
+        </div>
+    
+        <div class="product-card" data-category="oil">
+            <img src="https://via.placeholder.com/250" alt="Jojoba Oil">
+            <div class="product-info">
+                <h3>Jojoba Oil</h3>
+                <p>Perfect for moisturizing skin and hair.</p>
+                <div class="price">₹1,200</div>
+                <button class="btn">Add to Cart</button>
+            </div>
+        </div>
+    
+        <div class="product-card" data-category="capsules">
+            <img src="https://via.placeholder.com/250" alt="Moringa Capsules">
+            <div class="product-info">
+                <h3>Moringa Capsules</h3>
+                <p>Rich in nutrients and antioxidants.</p>
+                <div class="price">₹1,300</div>
+                <button class="btn">Add to Cart</button>
+            </div>
+        </div>
+    
+        <div class="product-card" data-category="gel">
+            <img src="https://via.placeholder.com/250" alt="Mint Gel">
+            <div class="product-info">
+                <h3>Mint Gel</h3>
+                <p>Refreshing and cooling for the skin.</p>
+                <div class="price">₹800</div>
+                <button class="btn">Add to Cart</button>
+            </div>
+        </div>
+    
+        <div class="product-card" data-category="tea">
+            <img src="https://via.placeholder.com/250" alt="Oolong Tea">
+            <div class="product-info">
+                <h3>Oolong Tea</h3>
+                <p>Boosts metabolism and aids weight loss.</p>
+                <div class="price">₹1,800</div>
+                <button class="btn">Add to Cart</button>
+            </div>
+        </div>
+    </section>
+    
+
+    <!-- Pagination -->
+    <div class="pagination">
+        <a href="#">1</a>
+        <a href="#">2</a>
+        <a href="#">3</a>
+    </div>
+</main>
+
+<script>
+    // Product filter and search functions
+    function filterProducts() {
+        const searchQuery = document.getElementById('search-bar').value.toLowerCase();
+        const category = document.getElementById('category-filter').value;
+        const products = document.querySelectorAll('.product-card');
+
+        products.forEach(product => {
+            const title = product.querySelector('h3').textContent.toLowerCase();
+            const productCategory = product.getAttribute('data-category');
+            const matchesSearch = title.includes(searchQuery);
+            const matchesCategory = category === "" || productCategory === category;
+
+            if (matchesSearch && matchesCategory) {
+                product.style.display = 'block';
+            } else {
+                product.style.display = 'none';
+            }
+        });
+    }
+
+    // Sort products by price
+    function sortProducts() {
+        const sortValue = document.getElementById('sort-options').value;
+        const productList = document.getElementById('product-list');
+        const products = Array.from(productList.children);
+
+        if (sortValue === 'price-asc') {
+            products.sort((a, b) => {
+                const priceA = parseInt(a.querySelector('.price').textContent.replace('₹', ''));
+                const priceB = parseInt(b.querySelector('.price').textContent.replace('₹', ''));
+                return priceA - priceB;
+            });
+        } else if (sortValue === 'price-desc') {
+            products.sort((a, b) => {
+                const priceA = parseInt(a.querySelector('.price').textContent.replace('₹', ''));
+                const priceB = parseInt(b.querySelector('.price').textContent.replace('₹', ''));
+                return priceB - priceA;
+            });
+        }
+
+        productList.innerHTML = '';
+        products.forEach(product => {
+            productList.appendChild(product);
+        });
+    }
+</script>
+
+</body>
+</html>

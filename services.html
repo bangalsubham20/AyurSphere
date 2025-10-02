@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 13px 0;
+            z-index: 10;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: white;
+            font-size: 17px;
+            font-weight: 600;
+            margin: 0 15px;
+            transition: color 0.3s ease;
+        }
+
+        .navbar a:hover {
+            color: #4caf50;
+        }
+
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            padding: 60px 20px;
+            text-align: center;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            font-size: 62px;
+            font-weight: 600;
+            color: #4CAF50;
+            margin-bottom: 40px;
+        }
+
+        /* Service Cards */
+        .service-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .service-card {
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            position: relative;
+            text-align: center;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
+        }
+
+        .service-card i {
+            font-size: 60px;
+            color: #4CAF50;
+            margin-bottom: 25px;
+            transition: transform 0.3s ease;
+        }
+
+        .service-card h3 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .service-card p {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .service-card a {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: #4CAF50;
+            color: white;
+            font-weight: bold;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .service-card a:hover {
+            background-color: #45a049;
+        }
+
+        /* Service Description Section */
+        .service-description {
+            background-color: #fff;
+            padding: 50px 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-top: 40px;
+        }
+
+        .service-description h2 {
+            font-size: 30px;
+            color: #333;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .service-description p {
+            font-size: 18px;
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* Responsive Design */
+        @media screen and (max-width: 768px) {
+            .container {
+                padding: 40px 20px;
+            }
+            .service-card {
+                padding: 30px;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .container {
+                padding: 20px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+
+    <div class="navbar">
+        <a href="first.html">Home</a>
+        
+        <a href="services.html">Services</a>
+        <a href="contactUs.html">Contact</a>
+        <a href="aboutUs.html">About</a>
+        <a href="e-commerce.html">Our Products</a>
+    </div>
+    <div class="container">
+        <h1>Our Services</h1>
+
+        <!-- Service Cards -->
+        <div class="service-cards">
+            <div class="service-card">
+                <i class="fas fa-user-md"></i>
+                <h3>Ayurvedic Consultation</h3>
+                <p>Get personalized health consultations from Ayurvedic experts, focusing on your unique body type and health concerns.</p>
+                <a href="#">Learn More</a>
+            </div>
+
+            <div class="service-card">
+                <i class="fas fa-pills"></i>
+                <h3>Herbal Medicine</h3>
+                <p>Discover our range of premium herbal remedies designed to treat various health issues, crafted using natural ingredients.</p>
+                <a href="#">Learn More</a>
+            </div>
+
+            <div class="service-card">
+                <i class="fas fa-recycle"></i>
+                <h3>Detox Programs</h3>
+                <p>Our detox programs help cleanse the body, improve vitality, and rejuvenate your overall health with Ayurvedic practices.</p>
+                <a href="#">Learn More</a>
+            </div>
+
+            <div class="service-card">
+                <i class="fas fa-spa"></i>
+                <h3>Ayurvedic Therapies</h3>
+                <p>Experience healing therapies such as Abhyanga massage, Shirodhara, and Panchakarma to restore balance and promote wellness.</p>
+                <a href="#">Learn More</a>
+            </div>
+
+            <div class="service-card">
+                <i class="fas fa-apple-alt"></i>
+                <h3>Diet & Lifestyle Coaching</h3>
+                <p>Learn how to eat and live according to Ayurvedic principles with personalized diet and lifestyle recommendations.</p>
+                <a href="#">Learn More</a>
+            </div>
+
+            <div class="service-card">
+                <i class="fas fa-brain"></i>
+                <h3>Stress Management</h3>
+                <p>Our stress management services integrate mindfulness, yoga, and Ayurvedic remedies to promote mental clarity and relaxation.</p>
+                <a href="#">Learn More</a>
+            </div>
+        </div>
+
+       
+    </div>
+
+</body>
+</html>

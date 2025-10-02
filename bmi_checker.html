@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Checker</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #d7d7d7;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            text-align: center;
+        }
+
+
+
+        /* Navbar Styles */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 13px 0;
+            z-index: 10;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: white;
+            font-size: 17px;
+            font-weight: 600;
+            margin: 0 15px;
+            transition: color 0.3s ease;
+        }
+
+        .navbar a:hover {
+            color: #4caf50;
+        }
+
+        /* Banner Image */
+        .banner {
+            width: 100%;
+            height: 500px;
+            background: url('https://images.pexels.com/photos/6669473/pexels-photo-6669473.jpeg?auto=compress&cs=tinysrgb&w=600') no-repeat center center fixed;
+            background-size: cover;
+            margin-bottom: 0px;
+            position: relative;
+            /* top: 200px; */
+        }
+
+        h1 {
+            font-size: 68px;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+        }
+
+        h2 {
+            font-size: 24px;
+            font-weight: 500;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Form Styles */
+        .bmi-form {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            width: 100%;
+            max-width: 600px;
+            box-sizing: border-box;
+            margin-bottom: 20px;
+        }
+
+        .bmi-form label {
+            font-size: 25px;
+            margin-bottom: 8px;
+            display: block;
+            text-align: left;
+        }
+
+        .bmi-form input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .bmi-form input[type="text"]:focus {
+            border-color: #4CAF50;
+        }
+
+        .bmi-form button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 6px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .bmi-form button:hover {
+            background-color: #45a049;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            text-align: left;
+        }
+
+        .result span {
+            font-size: 22px;
+        }
+
+        .result p {
+            font-size: 16px;
+            font-weight: normal;
+        }
+
+        /* Animation */
+        .fade-in {
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        /* Responsive Design */
+        @media screen and (max-width: 768px) {
+            .bmi-form {
+                padding: 30px;
+                width: 90%;
+            }
+            h1 {
+                font-size: 36px;
+            }
+            h2 {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <a href="first.html">Home</a>
+        
+        <a href="services.html">Services</a>
+        <a href="contactUs.html">Contact</a>
+        <a href="aboutUs.html">About</a>
+        <a href="e-commerce.html">Our Products</a>
+    </div>
+    <!-- Banner Section -->
+    <div class="banner"></div>
+
+    <h1>BMI Checker</h1>
+    <h2>Calculate Your Body Mass Index</h2>
+
+    <div class="bmi-form fade-in">
+        <form id="bmi-form">
+            <label for="weight">Weight (in kilograms):</label>
+            <input type="text" id="weight" name="weight" placeholder="Enter your weight" required>
+
+            <label for="height">Height (in meters):</label>
+            <input type="text" id="height" name="height" placeholder="Enter your height" required>
+
+            <button type="button" onclick="calculateBMI()">Calculate BMI</button>
+        </form>
+
+        <div id="result" class="result"></div>
+    </div>
+
+    <script>
+        function calculateBMI() {
+            const weight = parseFloat(document.getElementById('weight').value);
+            const height = parseFloat(document.getElementById('height').value);
+
+            if (isNaN(weight) || isNaN(height) || weight <= 0 || height <= 0) {
+                document.getElementById('result').innerHTML = '<span style="color:red;">Please enter valid numbers for weight and height.</span>';
+                return;
+            }
+
+            const bmi = weight / (height * height);
+            let resultMessage = `Your BMI is <strong>${bmi.toFixed(2)}</strong>.<br>`;
+
+            if (bmi < 18.5) {
+                resultMessage += '<p>Your BMI indicates that you are underweight.</p>';
+            } else if (bmi >= 18.5 && bmi < 24.9) {
+                resultMessage += '<p>Your BMI indicates that you are of normal weight.</p>';
+            } else if (bmi >= 25 && bmi < 29.9) {
+                resultMessage += '<p>Your BMI indicates that you are overweight.</p>';
+            } else {
+                resultMessage += '<p>Your BMI indicates that you are obese. Please consult with a healthcare provider.</p>';
+            }
+
+            document.getElementById('result').innerHTML = resultMessage;
+        }
+    </script>
+
+</body>
+</html>

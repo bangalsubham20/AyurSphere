@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="login.css">
+    <title>Login</title>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Login to AyurSphere</h2>
+        <form onsubmit="authenticate(event)">
+            <input type="text" id="username" placeholder="Username" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <button type="submit">Login</button>
+        </form>
+        <button onclick="window.location.href='signup.html'" class="secondary-btn">Sign Up</button>
+    </div>
+
+    <script>
+        function authenticate(event) {
+            event.preventDefault();
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+
+            var storedUsername = localStorage.getItem('username');
+            var storedPassword = localStorage.getItem('password');
+
+            if (username === 'Admin' && password === 'password') {
+                alert("Welcome, Admin!");
+                window.location.href = "first.html";
+            } else if (username === storedUsername && password === storedPassword) {
+                alert("Login successful.");
+                window.location.href = "first.html";
+            } else {
+                alert("Invalid username or password. Please try again.");
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ayurvedic Plants and Their Uses</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f5;
+            color: #333;
+            line-height: 1.6;
+        }
+
+       /* Navbar Styles */
+       .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 13px 0;
+            z-index: 10;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: white;
+            font-size: 17px;
+            font-weight: 600;
+            margin: 0 15px;
+            transition: color 0.3s ease;
+        }
+
+        .navbar a:hover {
+            color: #4caf50;
+        }
+
+        /* Banner Section */
+.banner {
+    width: 100%;
+    height: 300px;
+    background-image: url('https://images.pexels.com/photos/793012/pexels-photo-793012.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    /* border-radius: 0 0 35px 35px; */
+}
+
+.banner::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Add a dark overlay for text contrast */
+    z-index: 1;
+}
+
+.banner img {
+    filter: blur(5px); /* Apply blur to the background image */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.banner h1 {
+    font-size: 50px;
+    font-weight: bold;
+    color: white;
+    z-index: 2; /* Make sure the text is above the blurred background */
+}
+
+
+        /* Header Styling */
+        h2 {
+            font-size: 30px;
+            color: #4CAF50;
+            text-align: center;
+            margin-top: 50px;
+            font-weight: 600;
+        }
+
+        /* Plant Container */
+        .plant-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 40px auto;
+            box-sizing: border-box;
+        }
+
+        /* Individual Plant Box */
+        .plant {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
+        }
+
+        .plant:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .plant a {
+            text-decoration: none;
+            color: #4CAF50;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 10px;
+            font-size: 24px;
+            transition: color 0.3s;
+        }
+
+        .plant a:hover {
+            color: #2e7d32;
+        }
+
+        .plant p {
+            color: #666;
+            font-size: 16px;
+            margin-top: 15px;
+            line-height: 1.5;
+            padding: 0 10px;
+        }
+
+        /* Show More Button */
+        .show-more-btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            display: block;
+            margin: 20px auto;
+        }
+
+        .show-more-btn:hover {
+            background-color: #45a049;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+            margin-top: 50px;
+        }
+
+        .footer p {
+            font-size: 14px;
+            margin: 0;
+        }
+
+        /* Add subtle animations to the page */
+        .plant-container {
+            animation: fadeIn 1s ease-in;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        /* Mobile Responsive */
+        @media screen and (max-width: 768px) {
+            .banner h1 {
+                font-size: 35px;
+            }
+
+            h2 {
+                font-size: 26px;
+            }
+
+            .plant-container {
+                grid-template-columns: 1fr 1fr;
+                padding: 10px;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .banner h1 {
+                font-size: 28px;
+            }
+
+            h2 {
+                font-size: 22px;
+            }
+
+            .plant-container {
+                grid-template-columns: 1fr;
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+
+  <div class="navbar">
+    <a href="first.html">Home</a>
+    
+    <a href="services.html">Services</a>
+    <a href="contactUs.html">Contact</a>
+    <a href="aboutUs.html">About</a>
+    <a href="e-commerce.html">Our Products</a>
+</div>
+    <!-- Banner Section -->
+    <div class="banner">
+        <h1>Ayurvedic Plants and Their Uses</h1>
+    </div>
+
+    <!-- Title Section -->
+    <h2>Explore the Healing Powers of Nature</h2>
+
+    <!-- Plant Information Section -->
+    <div class="plant-container" id="plantContainer">
+        <!-- Plants will be inserted dynamically here -->
+    </div>
+
+    <!-- Show More Button -->
+    <button class="show-more-btn" id="showMoreBtn" onclick="showMore()">Show More</button>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>&copy; 2024 Ayurvedic Plants. All Rights Reserved.</p>
+    </div>
+
+    <script>
+        // Plant Data Array
+        const plants = [
+            { name: 'Neem', link: 'https://en.wikipedia.org/wiki/Azadirachta_indica', description: 'Neem has anti-bacterial, anti-fungal, and anti-inflammatory properties, used to treat various skin conditions, dental issues, and as a natural insect repellent.' },
+            { name: 'Tulsi (Holy Basil)', link: 'https://en.wikipedia.org/wiki/Ocimum_tenuiflorum', description: 'Tulsi is known for its antioxidant and adaptogenic properties. It is used to treat respiratory disorders, fever, and skin conditions.' },
+            { name: 'Ashwagandha', link: 'https://en.wikipedia.org/wiki/Withania_somnifera', description: 'Ashwagandha is an adaptogen that helps the body cope with stress, improves cognitive function, and overall vitality.' },
+            { name: 'Triphala', link: 'https://en.wikipedia.org/wiki/Triphala', description: 'Triphala is a combination of three fruits that support digestion, improve circulation, and promote overall well-being.' },
+            { name: 'Brahmi', link: 'https://en.wikipedia.org/wiki/Bacopa_monnieri', description: 'Brahmi enhances cognitive abilities, improves memory, promotes relaxation, and reduces stress and anxiety.' },
+            { name: 'Amalaki (Indian Gooseberry)', link: 'https://en.wikipedia.org/wiki/Phyllanthus_emblica', description: 'Amalaki is rich in vitamin C and antioxidants. It is used to boost immunity, promote hair and skin health, and improve digestion.' },
+            { name: 'Guduchi (Giloy)', link: 'https://en.wikipedia.org/wiki/Tinospora_cordifolia', description: 'Guduchi has immune-boosting and detoxifying properties. It is used to treat fever, improve digestion, and promote overall health.' },
+            { name: 'Haritaki', link: 'https://en.wikipedia.org/wiki/Terminalia_chebula', description: 'Haritaki supports digestive health, promotes detoxification, and enhances overall wellness.' },
+            { name: 'Shatavari', link: 'https://en.wikipedia.org/wiki/Asparagus_racemosus', description: 'Shatavari helps balance hormones, rejuvenates the body, and supports women\'s health, including fertility.' },
+            { name: 'Amla (Indian Gooseberry)', link: 'https://en.wikipedia.org/wiki/Phyllanthus_emblica', description: 'Amla is packed with vitamin C, promotes immunity, aids digestion, and improves hair and skin health.' },
+            { name: 'Ginseng', link: 'https://en.wikipedia.org/wiki/Panax_ginseng', description: 'Ginseng is an adaptogen that helps the body cope with stress and boosts energy and cognitive function.' },
+            { name: 'Licorice', link: 'https://en.wikipedia.org/wiki/Licorice', description: 'Licorice is used for its soothing properties, treating digestive issues, respiratory problems, and skin conditions.' },
+            { name: 'Chamomile', link: 'https://en.wikipedia.org/wiki/Chamomile', description: 'Chamomile is used for its calming effects and as a remedy for digestive disorders, insomnia, and skin irritation.' },
+            { name: 'Lavender', link: 'https://en.wikipedia.org/wiki/Lavender', description: 'Lavender is used for relaxation, to alleviate anxiety, and to treat skin conditions and headaches.' },
+            { name: 'Echinacea', link: 'https://en.wikipedia.org/wiki/Echinacea', description: 'Echinacea is used to boost the immune system and treat colds, flu, and respiratory infections.' },
+            { name: 'Peppermint', link: 'https://en.wikipedia.org/wiki/Peppermint', description: 'Peppermint is used to relieve digestive issues, headaches, and muscle pain.' },
+            { name: 'Sage', link: 'https://en.wikipedia.org/wiki/Sage', description: 'Sage is used for its medicinal properties, particularly for digestive and respiratory health.' },
+            { name: 'Aloe Vera', link: 'https://en.wikipedia.org/wiki/Aloe_vera', description: 'Aloe vera is used for its skin-healing properties and to treat digestive and inflammation issues.' },
+            { name: 'Moringa', link: 'https://en.wikipedia.org/wiki/Moringa_oleifera', description: 'Moringa is used to enhance energy, improve digestion, and offer numerous health benefits due to its rich nutrient content.' }
+        ];
+
+        // Function to display the first 6 plants
+        let visiblePlants = 6;
+        function displayPlants() {
+            const container = document.getElementById("plantContainer");
+            container.innerHTML = '';  // Clear the container
+            for (let i = 0; i < visiblePlants; i++) {
+                if (plants[i]) {
+                    container.innerHTML += `
+                        <div class="plant">
+                            <a href="${plants[i].link}">
+                                <h3>${plants[i].name}</h3>
+                            </a>
+                            <p>${plants[i].description}</p>
+                        </div>
+                    `;
+                }
+            }
+        }
+
+        // Show more functionality
+        function showMore() {
+            visiblePlants += 3;
+            if (visiblePlants >= plants.length) {
+                document.getElementById("showMoreBtn").style.display = 'none';
+            }
+            displayPlants();
+        }
+
+        // Initial display
+        displayPlants();
+    </script>
+
+</body>
+
+</html>

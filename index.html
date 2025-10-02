@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ayursphere - Welcome</title>
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Rubik+Wet+Paint&display=swap');
+        /* Global Styles */
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background: #2e8b57;
+            color: #333;
+            line-height: 1.6;
+        }
+/* Navbar Styles */
+.navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: #000000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 13px 0;
+            z-index: 10;
+            box-shadow: 0 2px 5px rgba(255, 255, 255, 0.5);
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: white;
+            font-size: 17px;
+            font-weight: 600;
+            margin: 0 15px;
+            transition: color 0.3s ease;
+        }
+
+        .navbar a:hover {
+            color: #4caf50;
+        }
+
+        /* Banner Section */
+        .banner {
+            text-align: center;
+            background: url('https://images.pexels.com/photos/7988006/pexels-photo-7988006.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1') no-repeat center center/cover;
+            color: white;
+            padding: 100px 20px;
+            height: 550px;
+            border-radius: 0 0 1500px 1500px;
+        }
+
+        .banner h1 {
+            font-family: Rubik Wet Paint;
+            font-size: 76px;
+            font-weight: 100;
+            color: #ffffff;
+            margin-bottom: 0px;
+            /* text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); */
+        }
+
+        .banner p {
+            font-size: 24px;
+            font-style: normal;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Main Content Styles */
+        .container {
+            text-align: center;
+            padding: 20px 20px;
+            position: absolute;
+            top: 360px;
+            left: 380px;
+            z-index: 10;
+            background: #a6dc4a4d;
+            border-radius: 25px;
+        }
+
+        .container h2 {
+            font-size: 40px;
+            color: #020202;
+            margin-bottom: 10px;
+        }
+
+        .tagline {
+            font-size: 20px;
+            font-style: normal;
+            color: #ffffff;
+            margin-bottom: 30px;
+        }
+
+        /* Buttons */
+        .buttons button {
+            background-color: #2e8b57;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 25px;
+            margin: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .buttons button:hover {
+            background-color: #236f45;
+            transform: scale(1.05);
+        }
+
+        /* Popup Interaction */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            z-index: 1001;
+            text-align: center;
+            max-width: 90%;
+            width: 400px;
+        }
+
+        .popup button {
+            background-color: #2e8b57;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 14px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .popup button:hover {
+            background-color: #236f45;
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #000000;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+   
+    <div class="navbar">
+        <a href="login.html">Home</a>
+        <a href="login.html">Services</a>
+        <a href="login.html">Contact</a>
+        <a href="login.html">About</a>
+        <a href="login.html">Our Products</a>
+    </div>
+
+    <!-- Banner Section -->
+    <div class="banner">
+        <h1>AyurSphere</h1>
+        <p>Reviving health with Ayurveda</p>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <h2>Your Journey to Wellness Begins Here</h2>
+        <p class="tagline">Experience the power of Ayurveda with our curated wellness solutions.</p>
+        <div class="buttons">
+            <button onclick="location.href='login.html'">Login</button>
+            <button onclick="location.href='signup.html'">Sign Up</button>
+        </div>
+    </div>
+
+    <!-- Popup Elements -->
+    <div class="overlay" id="overlay" onclick="closePopup()"></div>
+    <div class="popup" id="popup">
+        <p id="popup-message"></p>
+        <button onclick="closePopup()">Close</button>
+    </div>
+
+    <!-- Footer
+    <div class="footer">
+        &copy; 2024 AyurSphere. All Rights Reserved. | Privacy Policy | Terms of Service
+    </div> -->
+
+    <!-- Scripts -->
+    <script>
+        function showPopup() {
+            document.getElementById('popup-message').textContent = "Ayursphere is a platform dedicated to promoting Ayurvedic healthcare and wellness. Our mission is to provide holistic health solutions through traditional Ayurvedic practices and remedies.";
+            document.getElementById('popup').style.display = 'block';
+            document.getElementById('overlay').style.display = 'block';
+        }
+
+        function showContactPopup() {
+            document.getElementById('popup-message').textContent = "For any inquiries or assistance, please email us at info@ayursphere.com or call us at +1-123-456-7890. Our team is available to help you with any questions or concerns you may have.";
+            document.getElementById('popup').style.display = 'block';
+            document.getElementById('overlay').style.display = 'block';
+        }
+
+        function closePopup() {
+            document.getElementById('popup').style.display = 'none';
+            document.getElementById('overlay').style.display = 'none';
+        }
+    </script>
+</body>
+</html>

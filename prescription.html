@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prescription Form</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f4f7fc;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 13px 0;
+            z-index: 10;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: white;
+            font-size: 17px;
+            font-weight: 600;
+            margin: 0 15px;
+            transition: color 0.3s ease;
+        }
+
+        .navbar a:hover {
+            color: #4caf50;
+        }
+
+
+        /* Container */
+        .container {
+            padding-top: 30px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            width: 100%;
+            max-width: 1000px;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 60px;
+            margin-bottom: 20px;
+            color: #4CAF50;
+        }
+
+        label {
+            font-size: 16px;
+            color: #333;
+            text-align: left;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input, select, button {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 6px;
+            border: 1px solid #ddd;
+            font-size: 16px;
+            outline: none;
+        }
+
+        input:focus, select:focus, button:focus {
+            border-color: #4CAF50;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #prescription {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f1f1f1;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Animation */
+        .fade-in {
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        /* Responsive Design */
+        @media screen and (max-width: 768px) {
+            .container {
+                padding: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+
+    <div class="navbar">
+        <a href="first.html">Home</a>
+        
+        <a href="#services">Services</a>
+        <a href="contactUs.html">Contact</a>
+        <a href="aboutUs.html">About</a>
+        <a href="e-commerce.html">Our Products</a>
+    </div>
+
+    <div class="container">
+        <h2>Prescription Form</h2>
+        <form id="prescription-form" onsubmit="generatePrescription(event)">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" required>
+
+            <label for="gender">Gender:</label>
+            <select id="gender" name="gender" required>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+            </select>
+
+            <label for="disease">Select Disease:</label>
+            <select id="disease" name="disease" required>
+                <option value="">Select a Disease</option>
+                <option value="Headache">Headache</option>
+                <option value="Stomachache">Stomachache</option>
+                <option value="Cough">Cough</option>
+                <option value="Fever">Fever</option>
+                <option value="Sore Throat">Sore Throat</option>
+                <option value="Indigestion">Indigestion</option>
+                <option value="Diarrhea">Diarrhea</option>
+                <option value="Nausea">Nausea</option>
+                <option value="Insomnia">Insomnia</option>
+                <option value="Anxiety">Anxiety</option>
+                <option value="Common Cold">Common Cold</option>
+                <option value="Allergies">Allergies</option>
+                <option value="Sinusitis">Sinusitis</option>
+                <option value="Asthma">Asthma</option>
+                <option value="Arthritis">Arthritis</option>
+                <option value="Back Pain">Back Pain</option>
+                <option value="Migraine">Migraine</option>
+                <option value="Heartburn">Heartburn</option>
+                <option value="Hiccups">Hiccups</option>
+                <option value="Constipation">Constipation</option>
+                <option value="High Blood Pressure">High Blood Pressure</option>
+                <option value="Acne">Acne</option>
+                <option value="Eczema">Eczema</option>
+                <option value="Rash">Rash</option>
+                <option value="Stress">Stress</option>
+                <option value="Depression">Depression</option>
+                <option value="Obesity">Obesity</option>
+                <option value="Osteoporosis">Osteoporosis</option>
+                <option value="Gout">Gout</option>
+                <option value="Anemia">Anemia</option>
+                <option value="Bronchitis">Bronchitis</option>
+                <option value="Hypothyroidism">Hypothyroidism</option>
+                <option value="Hyperthyroidism">Hyperthyroidism</option>
+                <option value="Kidney Stones">Kidney Stones</option>
+                <option value="Liver Disease">Liver Disease</option>
+                <option value="Ulcers">Ulcers</option>
+                <option value="Gallstones">Gallstones</option>
+                <option value="Malaria">Malaria</option>
+                <option value="Dengue Fever">Dengue Fever</option>
+                <option value="Chikungunya">Chikungunya</option>
+            </select>
+
+            <button type="submit">Generate Prescription</button>
+        </form>
+
+        <div id="prescription" class="fade-in"></div>
+    </div>
+
+    <script>
+        function generatePrescription(event) {
+            event.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const age = document.getElementById('age').value;
+            const gender = document.getElementById('gender').value;
+            const disease = document.getElementById('disease').value;
+
+            // Ayurvedic Treatments for diseases
+            const treatments = {
+                "Headache": "Ashwagandha, Brahmi, and Shankhapushpi are often used in treating headaches. Relaxation techniques and proper sleep are recommended.",
+                "Stomachache": "Ginger, peppermint, and coriander are commonly recommended to soothe the stomach. Avoid heavy meals.",
+                "Cough": "Tulsi (Holy Basil) and honey are beneficial for cough relief. Drink warm fluids and avoid cold foods.",
+                "Fever": "A mixture of honey and turmeric is used to reduce fever. Hydration and rest are important.",
+                "Sore Throat": "Gargle with salt water, and drink warm herbal teas like ginger or licorice root.",
+                "Indigestion": "Triphala, ginger tea, and cumin seeds can aid digestion. Avoid heavy, oily foods.",
+                "Diarrhea": "The intake of buttermilk, ginger, and turmeric helps treat diarrhea. Stay hydrated.",
+                "Nausea": "Mint, ginger, and fennel can be helpful for nausea. Drink warm water.",
+                "Insomnia": "Ashwagandha and Brahmi are often used to improve sleep quality. Practice deep breathing before bedtime.",
+                "Anxiety": "Chamomile tea, Ashwagandha, and Brahmi help in reducing anxiety. Regular meditation can also be beneficial.",
+                "Common Cold": "Ginger tea, honey, and turmeric are great for colds. Inhalation of steam can help.",
+                "Allergies": "Turmeric and ginger are helpful for treating allergies. Avoid allergens.",
+                "Sinusitis": "Steam inhalation, Eucalyptus oil, and Triphala can help in clearing sinuses.",
+                "Asthma": "Use of herbs like Tulsi, Licorice, and Pippali, combined with proper breathing exercises, may help asthma.",
+                "Arthritis": "Turmeric, Ashwagandha, and joint oil massages are often used for arthritis pain relief.",
+                "Back Pain": "Ginger, turmeric, and regular stretching exercises may ease back pain.",
+                "Migraine": "Brahmi, Ashwagandha, and a proper sleep routine are commonly used for migraine relief.",
+                "Heartburn": "Aloe Vera juice, fennel seeds, and ginger are known to soothe heartburn.",
+                "Hiccups": "Drink warm water and try swallowing a spoonful of honey for hiccups relief.",
+                "Constipation": "Triphala, Aloe Vera, and warm water are used to alleviate constipation.",
+                "High Blood Pressure": "Garlic, Ashwagandha, and regular meditation can help lower blood pressure.",
+                "Acne": "Turmeric, neem, and sandalwood are effective for treating acne. Drink plenty of water.",
+                "Eczema": "Neem, turmeric, and coconut oil are used for skin conditions like eczema.",
+                "Rash": "Aloe Vera and turmeric paste are often applied to treat skin rashes.",
+                "Stress": "Ashwagandha, Brahmi, and meditation can help in managing stress.",
+                "Depression": "Ashwagandha, Brahmi, and regular yoga are effective for dealing with depression.",
+                "Obesity": "Triphala, herbal teas, and a balanced diet combined with exercise can help reduce weight.",
+                "Osteoporosis": "Ashwagandha and Triphala, along with a calcium-rich diet, are recommended.",
+                "Gout": "Turmeric, ginger, and proper hydration are suggested for managing gout.",
+                "Anemia": "Iron-rich foods like spinach and Ashwagandha can help manage anemia.",
+                "Bronchitis": "Tulsi, honey, and steam inhalation are helpful in treating bronchitis.",
+                "Hypothyroidism": "Ashwagandha and Triphala can help balance thyroid levels.",
+                "Hyperthyroidism": "A proper diet, Ashwagandha, and yoga can help manage hyperthyroidism.",
+                "Kidney Stones": "Drinking water mixed with lemon juice and using herbal teas like ginger and basil can help.",
+                "Liver Disease": "Milk Thistle, turmeric, and dandelion root can support liver health.",
+                "Ulcers": "Licorice, aloe vera, and honey are commonly used to treat ulcers.",
+                "Gallstones": "Herbal teas such as turmeric and peppermint can aid in gallstone management.",
+                "Malaria": "Use of Neem and papaya leaf extracts is known in treating malaria symptoms.",
+                "Dengue Fever": "Drink fresh coconut water and Papaya leaf extract to manage dengue fever.",
+                "Chikungunya": "Use of ginger, turmeric, and anti-inflammatory herbs may help relieve symptoms of Chikungunya."
+            };
+
+            // Generate prescription message
+            const prescriptionMessage = `
+                <h3>Prescription for ${name}</h3>
+                <p><strong>Age:</strong> ${age}</p>
+                <p><strong>Gender:</strong> ${gender}</p>
+                <p><strong>Disease:</strong> ${disease}</p>
+                <p><strong>Recommended Ayurvedic Treatment:</strong> ${treatments[disease]}</p>
+                <p><strong>Note:</strong> This is a basic recommendation. Always consult with a healthcare professional before starting any new treatment.</p>
+            `;
+
+            // Display prescription
+            document.getElementById('prescription').innerHTML = prescriptionMessage;
+        }
+    </script>
+
+</body>
+</html>

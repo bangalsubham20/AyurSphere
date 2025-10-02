@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - AyurSphere</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('https://images.pexels.com/photos/461428/pexels-photo-461428.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+        }
+
+        /* Overlay */
+        body:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
+            z-index: 0;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 15px 0;
+            z-index: 10;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+            font-weight: 600;
+            margin: 0 15px;
+            transition: color 0.3s ease;
+        }
+
+        .navbar a:hover {
+            color: #4caf50;
+        }
+
+        /* About Us Section */
+        .about-container {
+            max-width: 1500px;
+            margin: 120px auto;
+            padding: 50px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 1;
+        }
+
+        .about-container h1 {
+            font-size: 48px;
+            font-weight: 700;
+            color: #4b8c32;
+            margin-bottom: 20px;
+        }
+
+        .about-container p {
+            font-size: 18px;
+            color: #333;
+            line-height: 1.6;
+            margin-bottom: 40px;
+        }
+
+        .about-container h2 {
+            font-size: 32px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #4caf50;
+        }
+
+        .about-container img {
+            border-radius: 15px;
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            margin: 20px 0;
+        }
+
+        /* Team Section */
+        .team-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 2px;
+            margin-top: 50px;
+        }
+
+        .team-member {
+            text-align: center;
+            width: 18%;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .team-member img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+            object-fit: cover;
+        }
+
+        .team-member h3 {
+            font-size: 24px;
+            font-weight: 600;
+            color: #4caf50;
+            margin-bottom: 10px;
+        }
+
+        .team-member p {
+            font-size: 16px;
+            color: #777;
+            margin-bottom: 20px;
+        }
+
+        .team-member:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .team-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .team-member {
+                width: 80%;
+                margin-bottom: 20px;
+            }
+
+            .about-container h1 {
+                font-size: 32px;
+            }
+
+            .about-container p {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <a href="first.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="contactUs.html">Contact</a>
+        <a href="aboutUs.html">About</a>
+        <a href="e-commerce.html">Our Products</a>
+    </div>
+
+    <!-- About Us Section -->
+    <div class="about-container">
+        <h1>About AyurSphere</h1>
+        <p>AyurSphere is a holistic platform offering a complete range of Ayurvedic solutions for health and wellness. Rooted in ancient traditions, we blend natural remedies with modern tools to help you achieve balance and vitality. Our mission is to empower individuals by embracing the transformative power of Ayurveda for a harmonious life.</p>
+        
+        <h2>Our Vision</h2>
+        <p>Our vision is to bring the age-old wisdom of Ayurveda into the lives of people worldwide, offering sustainable solutions for overall well-being. We strive to create a community where ancient practices and modern science come together to enhance health.</p>
+
+        <img src="https://images.pexels.com/photos/1362537/pexels-photo-1362537.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Ayurveda image">
+
+        <h2>Meet Our Team</h2>
+<div class="team-container">
+    <!-- Frontend Developer -->
+    <div class="team-member">
+        <img src="https://i.postimg.cc/nLnrBF0W/Subham.jpg" alt="Frontend Developer">
+        <h3>Subham Bangal</h3>
+        <p>Frontend Developer</p>
+        <p>Subham is responsible for designing the user interface and ensuring a seamless user experience. With a keen eye for detail, he brought the visual elements of the website to life using HTML, CSS, and JavaScript.</p>
+    </div>
+
+    <!-- Backend Developer -->
+    <div class="team-member">
+        <img src="https://i.postimg.cc/PqKxMg75/Utsav.jpg" alt="Backend Developer">
+        <h3>Utsav Nandy</h3>
+        <p>Backend Developer</p>
+        <p>Utsav worked on the backend of the website, focusing on server-side logic, database management, and API integrations. He ensures that all data is securely handled and efficiently processed.</p>
+    </div>
+
+    <!-- UI/UX Designer -->
+    <div class="team-member">
+        <img src="https://i.postimg.cc/SssK1Z07/Umer.jpg" alt="UI/UX Designer">
+        <h3>Umer Shamshad</h3>
+        <p>UI/UX Designer</p>
+        <p>Umer is responsible for creating an intuitive and user-friendly design. He combined creativity and functionality to ensure that the website provides an exceptional user experience across all devices.</p>
+    </div>
+
+    <!-- Project Manager -->
+    <div class="team-member">
+        <img src="https://i.postimg.cc/3x5drCpY/Suraj.jpg" alt="Project Manager">
+        <h3>Suraj Prasad Gupta</h3>
+        <p>Project Manager</p>
+        <p>Suraj managed the development process, ensuring that deadlines were met and the team collaborated efficiently. His leadership skills kept the project on track, ensuring the success of the website.</p>
+    </div>
+</div>
+
+    </div>
+
+</body>
+</html>
