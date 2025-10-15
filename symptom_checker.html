@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AyurSphere - Symptom Checker</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap');
+
+    :root {
+      --bg: #f6fff8;
+      --card: #ffffff;
+      --primary: #2e8b57;
+      --primary-dark: #236f45;
+      --text: #222;
+      --muted: #666;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    /* Navbar */
+    .navbar {
+      position: sticky;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: #000000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 13px 0;
+      z-index: 10;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    }
+    .navbar a {
+      text-decoration: none;
+      color: white;
+      font-size: 17px;
+      font-weight: 600;
+      margin: 0 15px;
+      transition: color 0.3s ease;
+    }
+    .navbar a:hover { color: #4caf50; }
+
+    .page {
+      max-width: 980px;
+      margin: 32px auto;
+      padding: 0 16px 40px;
+    }
+
+    .header {
+      text-align: center;
+      margin: 12px 0 24px;
+    }
+    .header h1 {
+      margin: 0 0 8px;
+      color: var(--primary);
+      font-size: 40px;
+      font-weight: 700;
+    }
+    .header p { color: var(--muted); margin: 0; }
+
+    .card {
+      background: var(--card);
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    }
+
+    .groups {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(240px, 1fr));
+      gap: 16px 24px;
+      margin-top: 8px;
+    }
+
+    fieldset {
+      border: 1px solid #e8e8e8;
+      border-radius: 12px;
+      padding: 12px 14px 8px;
+      min-inline-size: auto;
+    }
+    legend {
+      padding: 0 6px;
+      font-weight: 600;
+      color: #333;
+    }
+
+    .symptom {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 6px 4px;
+    }
+
+    .actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+    }
+    button {
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      padding: 12px 18px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background .2s ease, transform .1s ease;
+    }
+    button:hover { background: var(--primary-dark); }
+    button:active { transform: translateY(1px); }
+    .secondary {
+      background: #e8f3ec;
+      color: #0f5132;
+    }
+
+    .results {
+      margin-top: 20px;
+      padding: 16px;
+      border-radius: 10px;
+      background: #f7fbf8;
+      border: 1px solid #e1efe7;
+    }
+    .results h3 { margin: 0 0 8px; color: #0f5132; }
+    .results ul { margin: 8px 0 0 18px; }
+    .disclaimer {
+      margin-top: 10px;
+      font-size: 12px;
+      color: #666;
+    }
+
+    @media (max-width: 720px) {
+      .groups { grid-template-columns: 1fr; }
+      .header h1 { font-size: 30px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="navbar">
+    <a href="first.html">Home</a>
+    <a href="services.html">Services</a>
+    <a href="contactUs.html">Contact</a>
+    <a href="aboutUs.html">About</a>
+    <a href="e-commerce.html">Our Products</a>
+  </div>
+
+  <main class="page">
+    <div class="header">
+      <h1>Symptom Checker</h1>
+      <p>Select symptoms to see possible matches. This is informational only.</p>
+    </div>
+
+    <section class="card">
+      <form id="checkerForm">
+        <div class="groups">
+          <fieldset>
+            <legend>General</legend>
+            <label class="symptom"><input type="checkbox" name="sym" value="fever"> Fever</label>
+            <label class="symptom"><input type="checkbox" name="sym" value="fatigue"> Fatigue</label>
+            <label class="symptom"><input type="checkbox" name="sym" value="body_aches"> Body aches</label>
+            <label class="symptom"><input type="checkbox" name="sym" value="chills"> Chills</label>
+            <label class="symptom"><input type="checkbox" name="sym" value="dizziness"> Dizziness</label>
+          </fieldset>
+
+          <fieldset>
+            <legend>Head & Nose</legend>
+            <label class="symptom"><input type="checkbox" name="sym" value="headache"> Headache</label>
+            <label class="symptom"><input type="checkbox" name="sym" value="runny_nose"> Runny nose</label>
+            <label class="symptom"><input type="checkbox" name="sym" value="sneezing"> Sneezing</label>
+            <label class="symptom"><input type="checkbox" name="sym" value="sore_throat"> Sore throat</label>
+          </fieldset>
+
+          <fieldset>
+            <legend>Chest & Breath</legend>
+            <label class="symptom"><input type="checkbox" name="sym" value="cough"> Cough</label>
+            <label class="symptom"><input type="checkbox" name="sym" value="short_breath"> Shortness of breath</label>
+            <label class="symptom"><input type="checkbox" name="sym" value="chest_pain"> Chest discomfort</label>
+          </fieldset>
+
+          <fieldset>
+            <legend>Stomach & Skin</legend>
+            <label class="symptom"><input type="checkbox" name="sym" value="nausea"> Nausea</label>
+            <label class="symptom"><input type="checkbox" name="sym" value="vomiting"> Vomiting</label>
+            <label class="symptom"><input type="checkbox" name="sym" value="diarrhea"> Diarrhea</label>
+            <label class="symptom"><input type="checkbox" name="sym" value="rash"> Rash</label>
+          </fieldset>
+        </div>
+
+        <div class="actions">
+          <button type="submit">Check Symptoms</button>
+          <button type="button" class="secondary" id="clearBtn">Clear</button>
+        </div>
+      </form>
+
+      <div class="results" id="results" hidden>
+        <h3>Possible matches</h3>
+        <ul id="matches"></ul>
+        <div class="disclaimer">
+          Not a diagnosis. For severe, persistent, or worrying symptoms, seek professional medical care.
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const form = document.getElementById('checkerForm');
+    const results = document.getElementById('results');
+    const matchesEl = document.getElementById('matches');
+    const clearBtn = document.getElementById('clearBtn');
+
+    function score(checked) {
+      const has = (k) => checked.has(k);
+
+      const conditions = [
+        {
+          name: 'Common cold',
+          when: () =>
+            (has('cough') || has('sore_throat')) &&
+            (has('runny_nose') || has('sneezing')) &&
+            !has('short_breath'),
+          tip: 'Rest, warm fluids, and humid air may help comfort.'
+        },
+        {
+          name: 'Seasonal allergy',
+          when: () =>
+            (has('sneezing') || has('runny_nose')) &&
+            !has('fever') &&
+            !has('body_aches'),
+          tip: 'Reduce exposure to triggers; consider consulting a professional for personalized advice.'
+        },
+        {
+          name: 'Flu (influenza) - possible',
+          when: () =>
+            has('fever') &&
+            (has('body_aches') || has('fatigue')) &&
+            (has('cough') || has('sore_throat')),
+          tip: 'Rest and hydration are important. Seek care if symptoms are severe.'
+        },
+        {
+          name: 'Migraine/headache syndrome',
+          when: () =>
+            has('headache') &&
+            (has('nausea') || has('vomiting')),
+          tip: 'Rest in a dark, quiet room and hydrate.'
+        },
+        {
+          name: 'Gastroenteritis - possible',
+          when: () =>
+            (has('nausea') || has('vomiting')) &&
+            has('diarrhea'),
+          tip: 'Oral hydration is important. Seek care if signs of dehydration occur.'
+        },
+        {
+          name: 'Seek urgent care',
+          when: () =>
+            has('chest_pain') || has('short_breath'),
+          tip: 'Chest discomfort or shortness of breath can be serious. Seek urgent medical attention.'
+        }
+      ];
+
+      const found = conditions.filter(c => c.when());
+      return found.length ? found : [{ name: 'No clear match', tip: 'Try selecting additional symptoms or consult a professional.' }];
+    }
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const checked = new Set([...new FormData(form).getAll('sym')]);
+      const found = score(checked);
+
+      matchesEl.innerHTML = '';
+      for (const c of found) {
+        const li = document.createElement('li');
+        li.textContent = `${c.name} — ${c.tip}`;
+        matchesEl.appendChild(li);
+      }
+      results.hidden = false;
+      // Save selection to restore later
+      localStorage.setItem('symptoms.selection', JSON.stringify([...checked]));
+    });
+
+    clearBtn.addEventListener('click', () => {
+      form.reset();
+      results.hidden = true;
+      matchesEl.innerHTML = '';
+      localStorage.removeItem('symptoms.selection');
+    });
+
+    // Restore previous selection if any
+    (function restore() {
+      try {
+        const saved = JSON.parse(localStorage.getItem('symptoms.selection') || '[]');
+        const set = new Set(saved);
+        [...form.querySelectorAll('input[type="checkbox"][name="sym"]')].forEach(cb => {
+          cb.checked = set.has(cb.value);
+        });
+        if (set.size) {
+          // Auto-run to show results for restored state
+          form.dispatchEvent(new Event('submit'));
+        }
+      } catch {}
+    })();
+  </script>
+</body>
+</html>

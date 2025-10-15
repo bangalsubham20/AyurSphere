@@ -5,134 +5,409 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Under Construction</title>
     <style>
-        /* Reset Styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+/* Fixed: all declarations are inside selectors; no stray properties or // comments */
+:root {
+  --bg: #ffffff;
+  --fg: #222222;
+  --accent: #0a8c6a;
+}
 
-        /* Body Styling */
-        body {
-            font-family: 'Arial', sans-serif;
-            height: 100vh;
-            background: url('https://via.placeholder.com/1920x1080') no-repeat center center/cover;
-            color: #fff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            overflow: hidden;
-        }
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 
-        /* Overlay Effect */
-        .overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.6);
-            z-index: 0;
-        }
+html, body {
+  margin: 0;
+  padding: 0;
+}
 
-        /* Content Wrapper */
-        .content {
-            z-index: 1;
-            max-width: 600px;
-            padding: 20px;
-            background: rgba(0, 0, 0, 0.7);
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  line-height: 1.5;
+}
 
-        .content h1 {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-
-        .content p {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-            line-height: 1.5;
-        }
-
-        .content .countdown {
-            font-size: 2rem;
-            font-weight: bold;
-            margin-bottom: 20px;
-        }
-
-        /* Button Styling */
-        .content button {
-            background-color: #ff4757;
-            color: #fff;
-            border: none;
-            padding: 12px 20px;
-            font-size: 1rem;
-            border-radius: 25px;
-            cursor: pointer;
-            text-transform: uppercase;
-            font-weight: bold;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-        }
-
-        .content button:hover {
-            background-color: #ff6b81;
-            transform: scale(1.1);
-        }
-
-        /* Animation */
-        .gear {
-            margin: 30px auto 20px;
-            animation: spin 3s linear infinite;
-        }
-
-        @keyframes spin {
-            0% {
-                transform: rotate(0deg);
-            }
-            100% {
-                transform: rotate(360deg);
-            }
-        }
+/* Add your page styles below inside proper selectors
+.container { max-width: 960px; margin: 0 auto; padding: 1rem; }
+*/
     </style>
 </head>
 <body>
-    <div class="overlay"></div>
-    <div class="content">
-        <img class="gear" width="48" height="48" src="https://img.icons8.com/color/48/gear.png" alt="gear"/>
-        <h1>Under Construction</h1>
-        <p>We’re working hard to bring you something amazing! Stay tuned for updates and exciting features coming soon.</p>
-        <div class="countdown" id="countdown"></div>
-        <button onclick="window.location.href='first.html'">Go Back to Home</button>
+    <div class="navbar">
+        <a href="first.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="contactUs.html">Contact</a>
+        <a href="aboutUs.html">About</a>
+        <a href="e-commerce.html">Our Products</a>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <h1>🌿 Ayurvedic Symptom Checker</h1>
+            <p>Discover natural Ayurvedic remedies based on your symptoms</p>
+        </div>
+
+        <div class="content">
+            <div class="symptom-input">
+                <label for="symptom-search">Describe your symptoms:</label>
+                <input type="text" id="symptom-search" placeholder="e.g., headache, stomach pain, fatigue..." />
+            </div>
+
+            <div class="symptom-categories">
+                <h3>Select symptom category:</h3>
+                <div class="category-grid">
+                    <div class="category-item" data-category="digestive">
+                        <strong>🍃 Digestive</strong>
+                        <p>Stomach, digestion issues</p>
+                    </div>
+                    <div class="category-item" data-category="respiratory">
+                        <strong>🫁 Respiratory</strong>
+                        <p>Breathing, cough, cold</p>
+                    </div>
+                    <div class="category-item" data-category="mental">
+                        <strong>🧠 Mental/Emotional</strong>
+                        <p>Stress, anxiety, mood</p>
+                    </div>
+                    <div class="category-item" data-category="musculoskeletal">
+                        <strong>💪 Musculoskeletal</strong>
+                        <p>Joint pain, muscle aches</p>
+                    </div>
+                    <div class="category-item" data-category="skin">
+                        <strong>✨ Skin & Hair</strong>
+                        <p>Skin conditions, hair problems</p>
+                    </div>
+                    <div class="category-item" data-category="general">
+                        <strong>⚡ General</strong>
+                        <p>Fatigue, fever, general wellness</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="common-symptoms">
+                <h3>Common symptoms:</h3>
+                <div class="symptoms-grid" id="symptoms-grid">
+                    <!-- Symptoms will be populated by JavaScript -->
+                </div>
+            </div>
+
+            <button class="check-button" onclick="analyzeSymptoms()">
+                Analyze Symptoms & Get Ayurvedic Recommendations
+            </button>
+
+            <div class="results" id="results">
+                <!-- Results will be populated by JavaScript -->
+            </div>
+
+            <div class="disclaimer">
+                <strong>⚠️ Disclaimer:</strong> This tool provides general Ayurvedic guidance and should not replace professional medical advice. Please consult with a qualified Ayurvedic practitioner or healthcare provider for serious health concerns.
+            </div>
+        </div>
     </div>
 
     <script>
-        // Countdown Timer Logic
-        const countdownElement = document.getElementById("countdown");
-        const targetDate = new Date();
-        targetDate.setDate(targetDate.getDate() + 7); // 7 days from now
+        const symptomDatabase = {
+            digestive: {
+                symptoms: ['Stomach Pain', 'Indigestion', 'Bloating', 'Nausea', 'Constipation', 'Diarrhea', 'Acid Reflux', 'Loss of Appetite'],
+                remedies: {
+                    'stomach pain': {
+                        condition: 'Stomach Pain (Sula)',
+                        severity: 'medium',
+                        description: 'According to Ayurveda, stomach pain often indicates Vata and Pitta imbalance.',
+                        remedies: [
+                            'Drink warm ginger tea with honey',
+                            'Apply warm sesame oil massage on abdomen',
+                            'Take Hingwashtak churna with warm water',
+                            'Eat light, warm, and easily digestible foods',
+                            'Practice Pawanmuktasana (wind-relieving pose)'
+                        ]
+                    },
+                    'indigestion': {
+                        condition: 'Indigestion (Ajirna)',
+                        severity: 'low',
+                        description: 'Indigestion indicates weak digestive fire (Agni) and Kapha imbalance.',
+                        remedies: [
+                            'Chew fresh ginger with rock salt before meals',
+                            'Drink cumin-coriander-fennel tea',
+                            'Take Triphala churna at bedtime',
+                            'Eat smaller, frequent meals',
+                            'Avoid cold and heavy foods'
+                        ]
+                    }
+                }
+            },
+            respiratory: {
+                symptoms: ['Cough', 'Cold', 'Sore Throat', 'Shortness of Breath', 'Chest Congestion', 'Runny Nose', 'Sneezing'],
+                remedies: {
+                    'cough': {
+                        condition: 'Cough (Kasa)',
+                        severity: 'medium',
+                        description: 'Cough in Ayurveda is primarily a Vata and Kapha disorder affecting the respiratory system.',
+                        remedies: [
+                            'Take honey with turmeric powder',
+                            'Drink warm milk with ghee and turmeric',
+                            'Inhale steam with eucalyptus oil',
+                            'Gargle with warm salt water',
+                            'Take Sitopaladi churna with honey'
+                        ]
+                    },
+                    'cold': {
+                        condition: 'Common Cold (Pratishyaya)',
+                        severity: 'low',
+                        description: 'Cold is caused by Kapha dosha imbalance and weakened immunity.',
+                        remedies: [
+                            'Drink ginger-tulsi-honey tea',
+                            'Take steam inhalation with ajwain',
+                            'Apply sesame oil in nostrils',
+                            'Eat warm, spiced foods',
+                            'Practice Bhramari pranayama'
+                        ]
+                    }
+                }
+            },
+            mental: {
+                symptoms: ['Stress', 'Anxiety', 'Insomnia', 'Depression', 'Mental Fatigue', 'Irritability', 'Memory Problems'],
+                remedies: {
+                    'stress': {
+                        condition: 'Stress (Manasika Vikara)',
+                        severity: 'medium',
+                        description: 'Stress indicates Vata imbalance affecting the mind and nervous system.',
+                        remedies: [
+                            'Practice daily meditation and pranayama',
+                            'Take Brahmi and Shankhpushpi herbs',
+                            'Perform Abhyanga (oil massage)',
+                            'Drink warm milk with nutmeg at bedtime',
+                            'Follow regular sleep schedule'
+                        ]
+                    },
+                    'anxiety': {
+                        condition: 'Anxiety (Chinta)',
+                        severity: 'medium',
+                        description: 'Anxiety is caused by aggravated Vata dosha affecting mental stability.',
+                        remedies: [
+                            'Practice Nadi Shodhana pranayama',
+                            'Take Saraswatarishta tonic',
+                            'Use lavender or sandalwood essential oils',
+                            'Eat grounding foods like almonds and dates',
+                            'Practice yoga and meditation regularly'
+                        ]
+                    }
+                }
+            },
+            musculoskeletal: {
+                symptoms: ['Joint Pain', 'Back Pain', 'Muscle Stiffness', 'Arthritis', 'Neck Pain', 'Muscle Cramps'],
+                remedies: {
+                    'joint pain': {
+                        condition: 'Joint Pain (Sandhivata)',
+                        severity: 'medium',
+                        description: 'Joint pain is primarily caused by Vata dosha imbalance affecting the joints.',
+                        remedies: [
+                            'Apply warm sesame oil with garlic',
+                            'Take Maharasnadi Kwath decoction',
+                            'Practice gentle yoga and stretching',
+                            'Use hot water bags on affected areas',
+                            'Consume turmeric milk daily'
+                        ]
+                    },
+                    'back pain': {
+                        condition: 'Back Pain (Kati Shoola)',
+                        severity: 'medium',
+                        description: 'Back pain indicates Vata imbalance and weakness in the musculoskeletal system.',
+                        remedies: [
+                            'Apply Mahanarayan oil massage',
+                            'Practice Bhujangasana and Marjariasana',
+                            'Take Yogaraja Guggulu tablets',
+                            'Use heating pad on lower back',
+                            'Sleep on firm mattress'
+                        ]
+                    }
+                }
+            },
+            skin: {
+                symptoms: ['Acne', 'Dry Skin', 'Rashes', 'Hair Fall', 'Dandruff', 'Eczema', 'Itching'],
+                remedies: {
+                    'acne': {
+                        condition: 'Acne (Yauvan Pidika)',
+                        severity: 'low',
+                        description: 'Acne is caused by Pitta and Kapha dosha imbalance affecting skin health.',
+                        remedies: [
+                            'Apply neem and turmeric face pack',
+                            'Drink neem and turmeric water',
+                            'Use rose water as toner',
+                            'Avoid oily and spicy foods',
+                            'Take Sariva and Manjishtha herbs'
+                        ]
+                    },
+                    'hair fall': {
+                        condition: 'Hair Fall (Khalitya)',
+                        severity: 'medium',
+                        description: 'Hair fall indicates Pitta dosha imbalance and stress affecting hair follicles.',
+                        remedies: [
+                            'Massage scalp with coconut oil and curry leaves',
+                            'Apply fenugreek paste to hair',
+                            'Take Bhringraj and Amla supplements',
+                            'Practice stress-reducing techniques',
+                            'Eat iron-rich foods like spinach'
+                        ]
+                    }
+                }
+            },
+            general: {
+                symptoms: ['Fatigue', 'Fever', 'Headache', 'Weakness', 'Loss of Appetite', 'Weight Loss', 'Weight Gain'],
+                remedies: {
+                    'fatigue': {
+                        condition: 'Fatigue (Klama)',
+                        severity: 'medium',
+                        description: 'Fatigue indicates Vata and Kapha imbalance with weakened vital energy (Ojas).',
+                        remedies: [
+                            'Take Chyawanprash daily in morning',
+                            'Drink Ashwagandha milk at bedtime',
+                            'Practice regular exercise and yoga',
+                            'Eat nutritious, sattvic foods',
+                            'Maintain proper sleep schedule'
+                        ]
+                    },
+                    'headache': {
+                        condition: 'Headache (Shirashoola)',
+                        severity: 'medium',
+                        description: 'Headache can be caused by any dosha imbalance affecting the nervous system.',
+                        remedies: [
+                            'Apply peppermint oil on temples',
+                            'Drink ginger tea with jaggery',
+                            'Practice Sheetali pranayama',
+                            'Apply cold compress on forehead',
+                            'Take adequate rest in dark room'
+                        ]
+                    }
+                }
+            }
+        };
 
-        function updateCountdown() {
-            const now = new Date();
-            const timeDifference = targetDate - now;
+        let selectedCategory = '';
+        let selectedSymptoms = [];
 
-            if (timeDifference > 0) {
-                const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            updateSymptomsGrid();
+        });
 
-                countdownElement.textContent = `Launching in: ${days}d ${hours}h ${minutes}m ${seconds}s`;
-            } else {
-                countdownElement.textContent = "We're Live Now!";
+        // Handle category selection
+        document.querySelectorAll('.category-item').forEach(item => {
+            item.addEventListener('click', function() {
+                // Remove previous selection
+                document.querySelectorAll('.category-item').forEach(cat => cat.classList.remove('selected'));
+                
+                // Add selection to clicked item
+                this.classList.add('selected');
+                selectedCategory = this.dataset.category;
+                
+                // Update symptoms grid
+                updateSymptomsGrid();
+            });
+        });
+
+        function updateSymptomsGrid() {
+            const symptomsGrid = document.getElementById('symptoms-grid');
+            symptomsGrid.innerHTML = '';
+            
+            if (selectedCategory && symptomDatabase[selectedCategory]) {
+                symptomDatabase[selectedCategory].symptoms.forEach(symptom => {
+                    const symptomTag = document.createElement('div');
+                    symptomTag.className = 'symptom-tag';
+                    symptomTag.textContent = symptom;
+                    symptomTag.addEventListener('click', function() {
+                        this.classList.toggle('selected');
+                        const symptomName = this.textContent.toLowerCase();
+                        
+                        if (this.classList.contains('selected')) {
+                            if (!selectedSymptoms.includes(symptomName)) {
+                                selectedSymptoms.push(symptomName);
+                            }
+                        } else {
+                            selectedSymptoms = selectedSymptoms.filter(s => s !== symptomName);
+                        }
+                    });
+                    
+                    symptomsGrid.appendChild(symptomTag);
+                });
             }
         }
 
-        setInterval(updateCountdown, 1000);
+        function analyzeSymptoms() {
+            const searchInput = document.getElementById('symptom-search').value.toLowerCase();
+            const resultsDiv = document.getElementById('results');
+            
+            // Combine search input with selected symptoms
+            let allSymptoms = [...selectedSymptoms];
+            if (searchInput) {
+                allSymptoms.push(searchInput);
+            }
+            
+            if (allSymptoms.length === 0) {
+                alert('Please enter or select at least one symptom.');
+                return;
+            }
+            
+            // Find matching remedies
+            let results = [];
+            
+            for (let category in symptomDatabase) {
+                for (let symptom of allSymptoms) {
+                    if (symptomDatabase[category].remedies[symptom]) {
+                        results.push(symptomDatabase[category].remedies[symptom]);
+                    }
+                }
+            }
+            
+            // If no exact matches, provide general wellness advice
+            if (results.length === 0) {
+                results.push({
+                    condition: 'General Wellness Guidance',
+                    severity: 'low',
+                    description: 'While we don\'t have specific remedies for your symptoms, here are general Ayurvedic wellness practices.',
+                    remedies: [
+                        'Follow a balanced diet according to your constitution',
+                        'Practice daily meditation and pranayama',
+                        'Maintain regular sleep schedule',
+                        'Stay hydrated with warm water',
+                        'Consult with an Ayurvedic practitioner for personalized advice'
+                    ]
+                });
+            }
+            
+            // Display results
+            displayResults(results);
+        }
+
+        function displayResults(results) {
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = '';
+            
+            results.forEach(result => {
+                const resultItem = document.createElement('div');
+                resultItem.className = 'result-item';
+                
+                resultItem.innerHTML = `
+                    <h3>${result.condition}</h3>
+                    <span class="severity ${result.severity}">${result.severity.toUpperCase()} PRIORITY</span>
+                    <p>${result.description}</p>
+                    <div class="recommendations">
+                        <h4>Ayurvedic Recommendations:</h4>
+                        <ul>
+                            ${result.remedies.map(remedy => `<li>${remedy}</li>`).join('')}
+                        </ul>
+                    </div>
+                `;
+                
+                resultsDiv.appendChild(resultItem);
+            });
+            
+            resultsDiv.style.display = 'block';
+            resultsDiv.scrollIntoView({ behavior: 'smooth' });
+        }
     </script>
 </body>
 </html>
+
